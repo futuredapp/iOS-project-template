@@ -1,0 +1,88 @@
+disabled_rules:
+  - line_length
+excluded:
+  - Pods
+  - PluginSDK
+  - LoadIN.playground
+opt_in_rules:
+  - last_where
+  - legacy_random
+  - identical_operands
+  - literal_expression_end_indentation
+  - private_action
+  - modifier_order
+  - file_name
+  - anyobject_protocol
+  - closure_body_length
+  - collection_alignment
+  - convenience_type
+  - discouraged_optional_boolean
+  - discouraged_optional_collection
+  - empty_string
+  - empty_xctest_method
+  - fallthrough
+  - array_init
+  - contains_over_first_not_nil
+  - vertical_whitespace
+  - empty_count
+  - switch_case_on_newline
+  - redundant_nil_coalesing
+  - overridden_super_call
+  - explicit_init
+  - conditional_returns_on_newline
+  - closure_spacing
+  - first_where
+  - closure_end_indentation
+  - attributes
+  - implicit_return
+  - object_literal
+  - operator_usage_whitespace
+  - redundant_nil_coalescing
+  - vertical_parameter_alignment_on_call
+  - unneeded_parentheses_in_closure_argument
+  - trailing_closure
+  - discouraged_direct_init
+  - private_over_fileprivate
+  - fatal_error_message
+  - force_unwrapping
+  - joined_default_parameter
+  - let_var_whitespace
+  - multiline_parameters
+  - nimble_operator
+  - no_extension_access_modifier
+  - number_separator
+  - override_in_extension
+  - pattern_matching_keywords
+  - private_outlet
+  - prohibited_super_call
+  - single_test_class
+  - sorted_first_last
+  - sorted_imports
+  - required_enum_case
+  - static_operator
+  - strict_fileprivate
+  - toggle_bool
+  - untyped_error_in_catch
+  - unused_import
+  - unused_private_declaration
+  - yoda_condition
+
+# Rule configurations
+identifier_name:
+  excluded:
+    - id
+    - x
+    - y
+    - z
+
+# Disable errors, allow only warnings
+cyclomatic_complexity:
+  warning: 10
+type_name:
+  max_length: 50
+force_cast: warning
+force_try: warning
+function_parameter_count: 5
+large_tuple:
+  warning: 3
+  error: 4
