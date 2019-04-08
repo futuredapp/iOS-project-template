@@ -2,8 +2,6 @@ disabled_rules:
   - line_length
 excluded:
   - Pods
-  - PluginSDK
-  - LoadIN.playground
 opt_in_rules:
   - last_where
   - legacy_random
