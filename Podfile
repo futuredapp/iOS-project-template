@@ -1,6 +1,6 @@
 
 platform :ios, '11.4'
-swift_version = '4.2'
+swift_version = '5.0'
 
 target '***' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
