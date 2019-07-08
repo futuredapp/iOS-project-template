@@ -7,10 +7,10 @@ target '***' do
   use_frameworks!
 
   # Funtasty architecture pods
-  pod 'FuntastyKit', '~> 1.4'
-  pod 'FTAPIKit', '~> 0.4'
-  pod 'FTAPIKit', '~> 0.4', subspecs: ['PromiseKit']
-  pod 'CellKit', git: 'https://github.com/thefuntasty/CellKit.git', tag: 'v0.2'
+  pod 'FuntastyKit', '~> 1.5'
+  pod 'FTAPIKit', '~> 0.5'
+  pod 'FTAPIKit', '~> 0.5', subspecs: ['PromiseKit']
+  pod 'CellKit', '~> 0.3'
 
   # Third-party pods
   pod 'PromiseKit', '~> 6.0'
