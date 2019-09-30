@@ -9,3 +9,4 @@ gem "xcpretty-json-formatter"
 # Fastlane plugins
 gem "fastlane-plugin-badge"
 gem "fastlane-plugin-appcenter"
+gem "fastlane-plugin-brew"
