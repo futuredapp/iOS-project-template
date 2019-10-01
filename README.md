@@ -48,5 +48,5 @@
 2. Download development provisioning profiles and certificate: `bundle exec fastlane provisioning`
 3. Build using Xcode or using Fastlane:
 	- Debug build and run tests: `bundle exec fastlane test`
-	- Build for enterprise distribution and submit to App Center: `bundle exec fastlane enteprise`
+	- Build for enterprise distribution and submit to App Center: `bundle exec fastlane enterprise`
 	- Build and submit to App store connect: `bundle exec fastlane beta`
