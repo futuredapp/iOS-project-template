@@ -9,16 +9,16 @@
 - Deadline: ~~**--. --. ----**~~
 - Next release: ~~**1.0.0**~~
 - Deployment target: ~~**12.0**~~
-- Bundle identifier: ~~`com.thefuntasty.project`~~
+- Bundle identifier: ~~`app.futured.project`~~
 - Supports: ~~**Dark mode, landscape orientation, iPadOS, watchOS**~~
 - Design: ~~Figma (add link)~~
 - ~~Backend: Apiary (add link)~~
 
 ### Team:
 
-- ~~Jana Nováková, PM, <jana.novakova@thefuntasty.com>~~
-- ~~Jan Novák, iOS developer, <jan.novak@thefuntasty.com>~~
-- ~~John Newman, tester, <john.newman@thefuntasty.com>~~
+- ~~Jana Nováková, PM, <jana.novakova@futured.app>~~
+- ~~Jan Novák, iOS developer, <jan.novak@futured.app>~~
+- ~~John Newman, tester, <john.newman@futured.app>~~
 
 ## Configuration management
 
@@ -30,14 +30,14 @@
 - Command line tools: **[Fastlane](https://docs.fastlane.tools)**
 - Code style:
 	- **[SwiftLint](https://swift.org/package-manager/)**
-	- **[Danger](https://github.com/thefuntasty/danger)**
+	- **[Danger](https://github.com/futuredapp/danger)**
 - ~~Localizations: Czech, English – **[POEditor](https://poeditor.com)**~~
 
 ### Dependencies
 
-- ~~**[FTAPIKit](https://github.com/thefuntasty/FTAPIKit)** (Declarative access to REST API.)~~
-- ~~**[FTTestingKit](https://github.com/thefuntasty/FTTestingKit)** (Helpers for testing long-running tasks and generating mockups)~~
-- ~~**[FuntastyKit](https://github.com/thefuntasty/FuntastyKit)** (Basics of MVVM-C architecture, coordinators, UIKit extensions and helpers.)~~
+- ~~**[FTAPIKit](https://github.com/futuredapp/FTAPIKit)** (Declarative access to REST API.)~~
+- ~~**[FTTestingKit](https://github.com/futuredapp/FTTestingKit)** (Helpers for testing long-running tasks and generating mockups)~~
+- ~~**[FuntastyKit](https://github.com/futuredapp/FuntastyKit)** (Basics of MVVM-C architecture, coordinators, UIKit extensions and helpers.)~~
 - ~~**[PromiseKit](https://github.com/mxcl/PromiseKit)** (Functional library for chaining and using backround and long running tasks.)~~
 
 ## Installation
