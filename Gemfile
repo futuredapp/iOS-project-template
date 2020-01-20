@@ -10,5 +10,5 @@ gem "xcpretty-json-formatter"
 gem "fastlane-plugin-badge"
 gem "fastlane-plugin-appcenter"
 gem "fastlane-plugin-brew"
-# If the app is using POEditor for localization management, uncomment next line:
+# If the app uses POEditor for localization management, uncomment next line:
 # gem "fastlane-plugin-poesie"
