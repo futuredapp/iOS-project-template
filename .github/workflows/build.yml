@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - develop
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: webfactory/ssh-agent@v0.2.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: Fastlane Enterprise
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec fastlane enterprise
+      env:
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+        APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
+    - name: Upload IPA
+      uses: actions/upload-artifact@v1
+      with:
+        name: Build.ipa
+        path: build_output
+    - name: Upload dSYM
+      uses: actions/upload-artifact@v1
+      with:
+        name: Build.app.dSYM.zip
+        path: build_output
