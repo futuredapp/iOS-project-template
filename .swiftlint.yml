@@ -3,65 +3,65 @@ disabled_rules:
 excluded:
   - Pods
 opt_in_rules:
-  - last_where
-  - legacy_random
-  - identical_operands
-  - literal_expression_end_indentation
-  - private_action
-  - modifier_order
-  - file_name
   - anyobject_protocol
+  - array_init
+  - attributes
   - closure_body_length
+  - closure_end_indentation
+  - closure_spacing
   - collection_alignment
+  - conditional_returns_on_newline
+  - contains_over_first_not_nil
   - convenience_type
+  - discouraged_direct_init
   - discouraged_optional_boolean
   - discouraged_optional_collection
+  - empty_count
   - empty_string
   - empty_xctest_method
-  - fallthrough
-  - array_init
-  - contains_over_first_not_nil
-  - vertical_whitespace
-  - empty_count
-  - switch_case_on_newline
-  - overridden_super_call
   - explicit_init
-  - conditional_returns_on_newline
-  - closure_spacing
-  - first_where
-  - closure_end_indentation
-  - attributes
-  - implicit_return
-  - object_literal
-  - operator_usage_whitespace
-  - redundant_nil_coalescing
-  - vertical_parameter_alignment_on_call
-  - unneeded_parentheses_in_closure_argument
-  - trailing_closure
-  - discouraged_direct_init
-  - private_over_fileprivate
+  - fallthrough
   - fatal_error_message
+  - file_name
+  - first_where
   - force_unwrapping
+  - identical_operands
+  - implicit_return
   - joined_default_parameter
+  - last_where
+  - legacy_random
   - let_var_whitespace
+  - literal_expression_end_indentation
+  - modifier_order
   - multiline_parameters
   - nimble_operator
   - no_extension_access_modifier
   - number_separator
+  - object_literal
+  - operator_usage_whitespace
+  - overridden_super_call
   - override_in_extension
   - pattern_matching_keywords
+  - private_action
   - private_outlet
+  - private_over_fileprivate
   - prohibited_super_call
+  - redundant_nil_coalescing
+  - required_enum_case
   - single_test_class
   - sorted_first_last
   - sorted_imports
-  - required_enum_case
   - static_operator
   - strict_fileprivate
+  - switch_case_on_newline
   - toggle_bool
+  - trailing_closure
+  - unneeded_parentheses_in_closure_argument
   - untyped_error_in_catch
-  - unused_import
   - unused_declaration
+  - unused_import
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace
   - yoda_condition
 
 # Rule configurations
