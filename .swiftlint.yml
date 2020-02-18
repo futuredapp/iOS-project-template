@@ -24,7 +24,6 @@ opt_in_rules:
   - vertical_whitespace
   - empty_count
   - switch_case_on_newline
-  - redundant_nil_coalesing
   - overridden_super_call
   - explicit_init
   - conditional_returns_on_newline
@@ -62,7 +61,7 @@ opt_in_rules:
   - toggle_bool
   - untyped_error_in_catch
   - unused_import
-  - unused_private_declaration
+  - unused_declaration
   - yoda_condition
 
 # Rule configurations
