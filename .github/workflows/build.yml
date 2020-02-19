@@ -40,9 +40,9 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: Build.ipa
-        path: build_output
+        path: build_output/Build.ipa
     - name: Upload dSYM
       uses: actions/upload-artifact@v1
       with:
         name: Build.app.dSYM.zip
-        path: build_output
+        path: build_output/Build.app.dSYM.zip
