@@ -32,6 +32,7 @@ jobs:
         gem install bundler
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
+        bundle exec fastlane run increment_build_number build_number:$GITHUB_RUN_NUMBER
         bundle exec fastlane enterprise
       env:
         FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
