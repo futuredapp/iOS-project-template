@@ -1,7 +1,5 @@
 # ~~Project name~~ (iOS)
 
-![Bitrise](https://img.shields.io/bitrise/appid.svg?token=apptoken)
-
 ~~Short project description.~~
 
 ## Project info
