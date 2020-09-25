@@ -1,12 +1,11 @@
-name: Build
+name: Beta
 
 on:
-  push:
-    branches:
-    - develop
+  release:
+    types: [published]
 
 jobs:
-  build:
+  beta:
     runs-on: macos-latest
 
     steps:
@@ -27,17 +26,15 @@ jobs:
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
-    - name: Fastlane Enterprise
+    - name: Fastlane Beta
       run: |
         gem install bundler
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        bundle exec fastlane run increment_build_number build_number:$GITHUB_RUN_NUMBER
-        bundle exec fastlane enterprise
+        bundle exec fastlane beta
       env:
         FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-        APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
     - name: Upload IPA
       uses: actions/upload-artifact@v2
       with:
