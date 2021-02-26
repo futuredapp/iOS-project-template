@@ -15,9 +15,6 @@ target '***' do
   # Third-party pods
   pod 'PromiseKit', '~> 6.0'
 
-  # Tools
-  pod 'SwiftLint'
-
   target '***Tests' do
     inherit! :search_paths
     # Pods for testing
