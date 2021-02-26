@@ -6,7 +6,7 @@ target '***' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Funtasty architecture pods
+  # Futured architecture pods
   pod 'FuntastyKit', '~> 2.2'
   pod 'FTAPIKit', '~> 1.2'
   pod 'FTAPIKit', '~> 1.2', subspecs: ['PromiseKit']
