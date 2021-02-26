@@ -7,13 +7,13 @@ target '***' do
   use_frameworks!
 
   # Futured architecture pods
-  pod 'FuntastyKit', '~> 2.2'
-  pod 'FTAPIKit', '~> 1.2'
-  pod 'FTAPIKit', '~> 1.2', subspecs: ['PromiseKit']
-  pod 'CellKit', '~> 0.8'
+  # pod 'FuntastyKit', '~> 2.2'
+  # pod 'FTAPIKit', '~> 1.2'
+  # pod 'FTAPIKit', '~> 1.2', subspecs: ['PromiseKit']
+  # pod 'CellKit', '~> 0.8'
 
   # Third-party pods
-  pod 'PromiseKit', '~> 6.13'
+  # pod 'PromiseKit', '~> 6.13'
 
   target '***Tests' do
     inherit! :search_paths
