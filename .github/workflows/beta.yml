@@ -33,7 +33,7 @@ jobs:
         bundle install --jobs 4 --retry 3
         bundle exec fastlane beta
       env:
-        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+        APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
     - name: Upload IPA
       uses: actions/upload-artifact@v2
