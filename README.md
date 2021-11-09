@@ -38,6 +38,12 @@
 - ~~**[FuntastyKit](https://github.com/futuredapp/FuntastyKit)** (Basics of MVVM-C architecture, coordinators, UIKit extensions and helpers.)~~
 - ~~**[PromiseKit](https://github.com/mxcl/PromiseKit)** (Functional library for chaining and using backround and long running tasks.)~~
 
+### Security standard
+
+This project is using ~~Standard, High, Higher~~ security standard.
+
+~~[Project specific standard](www.notion.so)~~
+
 ## Installation
 
 1. Install all required tools:
