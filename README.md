@@ -40,7 +40,7 @@
 
 ### Security standard
 
-This project is using ~~Standard, High, Highest~~ security standard.
+This project complies with ~~Standard (F0), High (F1), Highest (F2)~~ security standard.
 
 ~~[Project specific standard](www.notion.so)~~
 
