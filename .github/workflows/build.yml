@@ -6,7 +6,7 @@ on:
     - develop
 
 jobs:
-  enterprise:
+  build:
     uses: futuredapp/.github/.github/workflows/ios-selfhosted-build.yml@main
     secrets:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
