@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  beta:
+  release:
     uses: futuredapp/.github/.github/workflows/ios-selfhosted-release.yml@main
     secrets:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
