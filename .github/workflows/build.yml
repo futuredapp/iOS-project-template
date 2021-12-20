@@ -1,0 +1,14 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - develop
+
+jobs:
+  build:
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-build.yml@main
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
