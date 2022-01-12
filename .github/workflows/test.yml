@@ -5,5 +5,3 @@ on: [pull_request]
 jobs:
   test:
     uses: futuredapp/.github/.github/workflows/ios-selfhosted-test.yml@main
-    secrets:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
