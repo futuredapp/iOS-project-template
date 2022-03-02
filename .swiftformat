@@ -1,0 +1,20 @@
+# Disabled Rules
+--disable wrapMultilineStatementBraces,wrapSwitchCases,wrapEnumCases,wrapConditionalBodies
+
+# Options
+--commas inline
+--binarygrouping none
+--hexgrouping none
+--octalgrouping none
+--ifdef no-indent
+--ranges no-space
+--semicolons never
+--emptybraces spaced
+--stripunusedargs unnamed-only
+--wrapcollections before-first
+--wraparguments before-first
+
+# Folder Exclusions
+--exclude **/R.generated.swift
+
+--swiftversion 5.0
