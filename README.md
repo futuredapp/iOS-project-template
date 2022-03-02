@@ -28,6 +28,7 @@
 - Command line tools: **[Fastlane](https://docs.fastlane.tools)**
 - Code style:
 	- **[SwiftLint](https://swift.org/package-manager/)**
+	- **[SwiftFormat](https://github.com/nicklockwood/SwiftFormat)**
 	- **[Danger](https://github.com/futuredapp/danger)**
 - ~~Localizations: Czech, English – **[POEditor](https://poeditor.com)**~~
 
