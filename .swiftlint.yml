@@ -1,88 +1,137 @@
+
+# Disabled Rules
+
 disabled_rules:
   - line_length
-excluded:
-  - Pods
-  - vendor
+  - nesting
+
+
+# Opt-In Rules
+
 opt_in_rules:
-  - anyobject_protocol
-  - array_init
-  - attributes
-  - closure_body_length
-  - closure_end_indentation
-  - closure_spacing
-  - collection_alignment
-  - conditional_returns_on_newline
-  - contains_over_filter_count
-  - contains_over_filter_is_empty
-  - contains_over_first_not_nil
-  - contains_over_range_nil_comparison
-  - convenience_type
-  - discouraged_object_literal
-  - discouraged_optional_boolean
-  - discouraged_optional_collection
-  - empty_collection_literal
-  - empty_count
-  - empty_string
-  - empty_xctest_method
-  - enum_case_associated_values_count
-  - explicit_init
-  - fallthrough
-  - fatal_error_message
-  - file_name
-  - file_name_no_space
-  - first_where
-  - flatmap_over_map_reduce
-  - force_unwrapping
-  - function_default_parameter_at_end
-  - identical_operands
-  - implicit_return
-  - implicitly_unwrapped_optional
-  - joined_default_parameter
-  - last_where
-  - legacy_multiple
-  - legacy_random
-  - let_var_whitespace
-  - literal_expression_end_indentation
-  - lower_acl_than_parent
+
+  ## Style
+
+  ### Ordering
   - modifier_order
-  - multiline_arguments
+  - sorted_imports
+  - yoda_condition
+
+  ### Whitespace
+  - attributes
+  - let_var_whitespace
+  - closure_spacing
   - multiline_function_chains
   - multiline_literal_brackets
   - multiline_parameters
   - multiline_parameters_brackets
-  - nimble_operator
-  - no_extension_access_modifier
-  - number_separator
-  - object_literal
-  - operator_usage_whitespace
-  - optional_enum_case_matching
-  - overridden_super_call
-  - override_in_extension
-  - pattern_matching_keywords
-  - prefer_self_type_over_type_of_self
-  - private_action
-  - private_outlet
-  - prohibited_super_call
-  - reduce_into
-  - redundant_nil_coalescing
-  - required_enum_case
-  - single_test_class
-  - sorted_first_last
-  - sorted_imports
-  - static_operator
-  - strict_fileprivate
+  - multiline_arguments
+  - multiline_arguments_brackets
+  - conditional_returns_on_newline
   - switch_case_on_newline
-  - toggle_bool
+  - operator_usage_whitespace
+  - vertical_whitespace_closing_braces
+
+  ### Indentation
+  - collection_alignment
+  - closure_end_indentation
+  - vertical_parameter_alignment_on_call
+  - literal_expression_end_indentation
+
+  ### Parentheses
   - trailing_closure
   - unneeded_parentheses_in_closure_argument
-  - untyped_error_in_catch
+
+  ### Format
+  - number_separator
+  - fatal_error_message
+
+  ### Naming
+  - discouraged_none_name
+#  - anonymous_argument_in_multiline_closure
+  - file_name_no_space
+
+  ### Other
   - unused_declaration
   - unused_import
-  - vertical_parameter_alignment_on_call
-  - vertical_whitespace_closing_braces
-  - yoda_condition
+  - identical_operands
 
-# Rule configurations
+  ## Swift-specific
+
+  ### Access Control
+  - strict_fileprivate
+  - lower_acl_than_parent
+  - private_action
+  - private_outlet
+
+  ### Keyword & Operator Use
+  - static_operator
+  - unowned_variable_capture  
+  - implicit_return
+  - fallthrough
+  - pattern_matching_keywords
+  - optional_enum_case_matching
+  - discouraged_object_literal
+
+  ### Type-related
+  - convenience_type
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - discouraged_optional_boolean
+  - redundant_nil_coalescing
+  - untyped_error_in_catch
+
+  ### Inheritance-related
+  - anyobject_protocol
+  - overridden_super_call
+  - prohibited_super_call
+  - override_in_extension
+  - prefer_self_type_over_type_of_self
+  - prefer_self_in_static_references
+
+  ### Legacy
+  - array_init
+  - explicit_init
+  - joined_default_parameter
+  - legacy_multiple
+  - legacy_random
+  - toggle_bool
+  - prefer_zero_over_explicit_init
+
+  ## Performance
+
+  - empty_count
+  - empty_string
+  - empty_collection_literal
+
+  - first_where
+  - last_where
+  - sorted_first_last
+
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+
+  - reduce_into
+  - flatmap_over_map_reduce
+
+  ## Metrics
+
+  - closure_body_length
+  - enum_case_associated_values_count
+
+
+  ## Tests
+
+  - empty_xctest_method
+  - single_test_class
+  - xct_specific_matcher
+  - test_case_accessibility
+
+
+# Rule Modifications
+
 identifier_name:
   excluded:
     - id
@@ -90,14 +139,42 @@ identifier_name:
     - y
     - z
 
-# Disable errors, allow only warnings
-cyclomatic_complexity:
-  warning: 10
+
+# Severity Modifications
+
 type_name:
   max_length: 50
-force_cast: warning
-force_try: warning
+
+file_length:
+  warning: 500
+  error: 700
+
+type_body_length:
+  warning: 350
+  error: 500
+
+function_body_length:
+  warning: 50
+  error: 75
+
+closure_body_length:
+  warning: 60
+
+cyclomatic_complexity:
+  warning: 10
+
 function_parameter_count: 5
+
 large_tuple:
   warning: 3
   error: 4
+
+force_cast: warning
+force_try: warning
+
+
+# Folder Exclusions
+
+excluded:
+  - Pods
+  - **/R.generated.swift
