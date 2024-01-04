@@ -135,6 +135,7 @@
 			buildConfigurationList = F452BFE12B45FCEB006FF18D /* Build configuration list for PBXNativeTarget "Template" */;
 			buildPhases = (
 				F452BFB92B45FCE9006FF18D /* Sources */,
+				F4CB54432B469FF9007EA0E3 /* Run SwiftLint */,
 				F452BFBA2B45FCE9006FF18D /* Frameworks */,
 				F452BFBB2B45FCE9006FF18D /* Resources */,
 			);
@@ -251,6 +252,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F4CB54432B469FF9007EA0E3 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n    swiftlint --fix\n    swiftlint\nelse\n    echo \"error: SwiftLint not installed, run: brew install swiftlint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F452BFB92B45FCE9006FF18D /* Sources */ = {
