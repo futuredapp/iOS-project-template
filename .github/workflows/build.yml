@@ -1,13 +1,14 @@
 name: Build
 
 on:
-  # Schedule https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
-  # Schedule to run this at 00:00 UTC every tuesday to saturday
-  # check cron syntax https://crontab.guru/
+  # Enable a workflow to be triggered manually
+  workflow_dispatch:
+
+  # Schedule docs https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+  # Check cron syntax here https://crontab.guru/
+  # Schedule to run this workflow at 00:00 UTC every tuesday to saturday
   schedule:
     - cron: '0 0 * * 2-6'
-
-  workflow_dispatch:
 
 jobs:
   build:
