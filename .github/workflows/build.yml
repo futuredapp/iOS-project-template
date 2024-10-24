@@ -1,9 +1,13 @@
 name: Build
 
 on:
-  push:
-    branches:
-    - develop
+  # Schedule https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+  # Schedule to run this at 00:00 UTC every tuesday to saturday
+  # check cron syntax https://crontab.guru/
+  schedule:
+    - cron: '0 0 * * 2-6'
+
+  workflow_dispatch:
 
 jobs:
   build:
