@@ -2,10 +2,10 @@ name: Build
 
 on:
   # Schedule https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
-  # Schedule to run this at 11:00 and 22:00 UTC+2 every monday to friday
+  # Schedule to run this at 00:00 UTC every tuesday to saturday
   # check cron syntax https://crontab.guru/
   schedule:
-    - cron: '0 1 * * 2-6'
+    - cron: '0 0 * * 2-6'
 
   workflow_dispatch:
 
