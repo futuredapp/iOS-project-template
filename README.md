@@ -6,51 +6,46 @@
 
 - Deadline: ~~**--. --. ----**~~
 - Next release: ~~**1.0.0**~~
-- Deployment target: ~~**12.0**~~
-- Bundle identifier: ~~`app.futured.project`~~
-- Supports: ~~**Dark mode, landscape orientation, iPadOS, watchOS**~~
+- Deployment target: ~~**16.0**~~
+- Bundle identifiers: ~~`app.futured.project`, `app.futured.project.beta, `app.customer.project``~~
+- Supports: ~~**Dark mode, Landscape orientation, iPadOS, Accessibility**~~
 - Design: ~~Figma (add link)~~
-- ~~Backend: Apiary (add link)~~
+- Backend: ~~(add link)~~
 
 ### Team:
 
 - ~~Jana Nováková, PM, <jana.novakova@futured.app>~~
+- ~~Hans Novak, designer, <hans.novak@futured.app>~~
 - ~~Jan Novák, iOS developer, <jan.novak@futured.app>~~
+- ~~Hansina Novak, Android developer, <hansina.novak@futured.app>~~
 - ~~John Newman, tester, <john.newman@futured.app>~~
 
 ## Configuration management
 
 ### Tools
 
-- Language: ~~**Swift 5.0**~~
-- IDE: ~~**Xcode 11.0**~~
+- Language: ~~**Swift 5.10**~~
+- IDE: ~~**Xcode 16.1**~~
 - Dependency management: ~~**[Swift package manager](https://swift.org/package-manager/)**~~
 - Command line tools: **[Fastlane](https://docs.fastlane.tools)**
 - Code style:
 	- **[SwiftLint](https://swift.org/package-manager/)**
 	- **[Danger](https://github.com/futuredapp/danger)**
-- ~~Localizations: Czech, English – **[POEditor](https://poeditor.com)**~~
+- ~~Localizations: Czech, English~~
 
 ### Dependencies
 
 - ~~**[FTAPIKit](https://github.com/futuredapp/FTAPIKit)** (Declarative access to REST API.)~~
 - ~~**[FTTestingKit](https://github.com/futuredapp/FTTestingKit)** (Helpers for testing long-running tasks and generating mockups)~~
 - ~~**[FuntastyKit](https://github.com/futuredapp/FuntastyKit)** (Basics of MVVM-C architecture, coordinators, UIKit extensions and helpers.)~~
-- ~~**[PromiseKit](https://github.com/mxcl/PromiseKit)** (Functional library for chaining and using backround and long running tasks.)~~
 
-### Security standard
-
-This project complies with ~~Standard (F0), High (F1), Highest (F2)~~ security standard.
-
-~~[Project specific standard](www.notion.so)~~
+~~Manually added:~~
+- ~~**[ACKLocalization](https://github.com/AckeeCZ/ACKLocalization.git)** (Localize your Cocoa apps from Google Spreadsheet.)~~
 
 ## Installation
 
-1. Install all required tools:
-	- Install ruby: `brew install ruby`
-	- In the project folder install all ruby tools: `bundle install`
-2. Download development provisioning profiles and certificate: `bundle exec fastlane provisioning`
-3. Build using Xcode or using Fastlane:
-	- Debug build and run tests: `bundle exec fastlane test`
-	- Build and submit Beta version to App store connect: `bundle exec fastlane beta`
-	- Build and submit Release candidate to App store connect: `bundle exec fastlane release`
+In the project folder from Terminal:
+
+1. `bundle install` - install gemfile dependencies
+2. `bundle exec fastlane provisioning` - download development provisioning profiles and certificate
+3. build using Xcode
