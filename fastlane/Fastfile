@@ -9,10 +9,10 @@ ENV['APP_IDENTIFIER'] = 'app.futured.app_name'
 #ENV['BADGE_DARK'] = 'true'
 
 # In case the app is released under partner's developer account setup following variables:
-ENV['APP_IDENTIFIER_CUSTOMER'] = 'cz.our.futuristic.partner'
-ENV['TEAM_ID_CUSTOMER'] = 'AAAAAAAAAA'
+#ENV['APP_IDENTIFIER_CUSTOMER'] = 'cz.our.futuristic.partner'
+#ENV['TEAM_ID_CUSTOMER'] = 'AAAAAAAAAA'
 # Use these steps to get ASC ID: https://stackoverflow.com/a/46415415/3887546 
-ENV['ASC_TEAM_ID_CUSTOMER'] = '123456'
-ENV['CUSTOMERS_BRANCH'] = 'partner'
+#ENV['ASC_TEAM_ID_CUSTOMER'] = '123456'
+#ENV['CUSTOMERS_BRANCH'] = 'partner'
 
 import_from_git(url: 'git@github.com:futuredapp/fastlane.git')
