@@ -8,8 +8,6 @@ xcuserdata/
 ## Other
 .DS_Store
 *.moved-aside
-*.xccheckout
-*.xcscmblueprint
 
 ## Obj-C/Swift specific
 *.hmap
