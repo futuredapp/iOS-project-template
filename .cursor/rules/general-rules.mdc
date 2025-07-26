@@ -1,0 +1,35 @@
+---
+alwaysApply: true
+description: "General rules"
+---
+
+## 📜 General Rules
+- **Immutability**: Prefer `let` over `var` wherever possible. Use immutable data structures.
+- **Error Handling**: Use Swifts `throw`ing functions for error handling. Avoid optional return values for error conditions.
+
+## View Modifier Order
+
+**Rule**: The order of view modifiers should be consistent to improve readability. The recommended order is:
+1.  **UI Modifiers**: Style, layout, padding, etc. (`.foregroundColor`, `.padding`, `.frame`)
+2.  **Navigation/Presentation Modifiers**: `.navigationTitle`, `.sheet`, `.alert`
+3.  **Action/Data Modifiers**: `.onAppear`, `.task`, `.onChange`
+
+**Rationale**: A consistent order makes it easier to scan and understand the purpose of a views modifiers.
+
+**Bad**:
+```swift
+Text("Hello, World!")
+    .task { await viewModel.load() }
+    .padding()
+    .navigationTitle("Greeting")
+    .foregroundColor(.blue)
+```
+
+**Good**:
+```swift
+Text("Hello, World!")
+    .foregroundColor(.blue)
+    .padding()
+    .navigationTitle("Greeting")
+    .task { await viewModel.load() }
+```

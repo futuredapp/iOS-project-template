@@ -1,0 +1,11 @@
+---
+globs: *FuturedHelpers*
+alwaysApply: false
+description: "FuturedHelpers rules"
+---
+# Using FuturedHelpers
+
+The `FuturedHelpers` library provides a set of reusable components and extensions.
+
+-   **Image Picker:** The `GalleryImagePicker` and `CameraImagePicker` provide a simple way to let the user select images.
+-   **Don't reinvent the wheel:** Before writing a new helper function, check if a similar one already exists in `FuturedHelpers`.

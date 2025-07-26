@@ -1,0 +1,22 @@
+---
+alwaysApply: true
+description: "Architecture usage rules"
+---
+
+# Using FuturedArchitecture
+
+When using the `FuturedArchitecture` library, follow these guidelines:
+
+-   **Scenes are built with Components:** Every view should have a corresponding `...Component.swift` and `...ComponentModel.swift` file. The `ComponentModel` holds the view's state and logic, while the `Component` is the SwiftUI view itself.
+-   **Navigation is handled by Coordinators:** Do not use `NavigationLink` directly. Instead, use a `FlowCoordinator` to manage navigation between scenes. This makes the navigation logic centralized and easier to manage.
+-   **Use `DataCache` for shared data:** If you need to share data between different parts of the app, use the `DataCache` provided by the library.
+-   **Modals:** `ModalCoverModel` stored only in coordinator to present modal sheets. This ensures a consistent look and feel across the app. If model sheet is specific for view (it should have some closures which are needed to be handled from ComponentModel of it's parent) and cannot be generalize presentation should not take place in Coordinator instead in that specifc view and it's view model.
+
+# Architecture rules
+
+- **SwiftUI Best Practices**: Components should be lightweight `View` structs. Complex logic should reside in the `ComponentModel`, not in the `View`.
+- **MVVM-C Adherence**: Strictly follow the Model-View-ViewModel-Coordinator pattern.
+    - **Views (`Component`)**: Should only handle UI and bind to a `ComponentModel`. Binding to it's model must be done throught defying generic value of model (`ExampleComponent<Model: ExampleComponentModelProtocol`) and having property `@StateObject var model: Model`. That's for adding posibility for dependency injection.
+    - **ViewModels (`ComponentModel`)**: Contain presentation logic, state, and business logic. They have it's own protocol `ComponentModelProtocol` which implement at least protocol named `ComponentModel`.
+    - **Coordinators (`FlowCoordinator`)**: Manage navigation and dependency injection. They create and present `View`s and `ComponentModel`s.
+- **Dependency Injection**: Use the `Container` for injecting dependencies to `Coordinators`. Avoid singletons or global accessors.

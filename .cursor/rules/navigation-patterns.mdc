@@ -1,0 +1,16 @@
+---
+globs: *Coordinator*
+alwaysApply: false
+description: "Navigation Patterns"
+---
+# Navigation Patterns
+
+**Rule**: Navigation should be handled exclusively through Coordinators, not directly in Components.
+
+**Rationale**: Centralizing navigation logic in Coordinators makes the navigation flow more maintainable and testable. It also allows for easier deep linking and navigation state restoration.
+
+## Tab Navigation
+
+**Rule**: Use `TabViewFlow` for tab-based navigation and implement a dedicated Tab Coordinator for each tab.
+
+**Rationale**: This ensures proper separation of concerns and allows each tab to manage its own navigation stack independently.

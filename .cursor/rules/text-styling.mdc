@@ -1,0 +1,95 @@
+---
+globs: *Component*,*View*,*UI*,*Text*
+alwaysApply: false
+description: "Text Styling Guidelines"
+---
+
+# Text Styling Guidelines
+
+**Rule**: Each project must define an enumeration of supported text styles that provides a consistent typography system.
+
+**Requirements**:
+1. Create a `TextStyles` enum that maps to `TextStyle` from `FuturedHelpers`
+2. Use semantic naming for cases (e.g., `title1`, `body`, `caption`) rather than specific sizes
+3. Support font weight customization through associated values
+4. Implement a computed property `textStyle` that returns the configured `TextStyle`
+
+**Rationale**: 
+- Centralizes typography definitions
+- Makes it easier to maintain consistent text styling
+- Provides type-safe access to text styles
+- Allows for easy updates to typography system
+- Abstracts specific font metrics behind semantic names
+
+**Rules**:
+1. Never use raw font sizes or weights directly in views
+2. Always use the `TextStyles` enum for text styling
+3. Keep style names semantic (e.g., `title1` instead of `size28`)
+4. Include appropriate line heights and letter spacing
+5. Provide default font weights but allow customization
+6. Document any project-specific style guidelines in comments
+
+**Example Implementation**:
+```swift
+import FuturedHelpers
+import SwiftUI
+
+public enum TextStyles {
+    case caption(Font.Weight = .regular)
+    case body
+    case title1(Font.Weight = .regular)
+    // Add other cases as needed
+
+    var textStyle: TextStyle {
+        switch self {
+        case let .caption(weight):
+            TextStyle(
+                fontType: .system(weight: weight, width: .standard),
+                size: 11,
+                lineHeight: 14
+            )
+        case .body:
+            TextStyle(
+                fontType: .system(weight: .regular, width: .standard),
+                size: 17,
+                lineHeight: 22
+            )
+        case let .title1(weight):
+            TextStyle(
+                fontType: .system(weight: weight, width: .standard),
+                size: 28,
+                lineHeight: 34,
+                letter: .absolute(points: -0.5)
+            )
+        }
+    }
+}
+```
+
+**Bad**:
+```swift
+// Don't use raw font values
+Text("Hello")
+    .font(.system(size: 28))
+    .lineSpacing(6)
+
+// Don't create one-off text styles
+struct CustomText: View {
+    var body: some View {
+        Text("Hello")
+            .font(.system(size: 17, weight: .regular))
+            .lineSpacing(5)
+    }
+}
+```
+
+**Good**:
+```swift
+// Use the TextStyles enum
+Text("Hello")
+    .textStyle(.body)
+
+// Allow weight customization when needed
+Text("Hello")
+    .textStyle(.caption(.semibold), foregroundColor: .black)
+```
