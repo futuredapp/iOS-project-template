@@ -1,0 +1,69 @@
+---
+globs: *.swift
+alwaysApply: false
+decsription: "Linting .swift files rules"
+---
+# 🔍 SwiftLint Compliance Guidelines
+
+## Required Pre-Implementation Check
+
+**CRITICAL**: Before implementing any Swift source code, you MUST review and understand the project's SwiftLint configuration at `.swiftlint.yml`.
+
+## Key Configuration Points
+
+1. **Disabled Rules**:
+   - Line length restrictions are disabled
+   - Review complete list in `.swiftlint.yml`
+
+2. **Opt-in Rules**:
+   - Code MUST comply with all opt-in rules including:
+     - Proper closure formatting (spacing, indentation, body length)
+     - Collection alignment
+     - Conditional returns on newline
+     - Explicit initialization
+     - Force unwrapping is monitored
+     - Proper multiline arguments and parameters formatting
+     - Sorted imports
+     - And many more (see full list in `.swiftlint.yml`)
+
+3. **Analyzer Rules**:
+   - No unused declarations
+   - No unused imports
+
+4. **Specific Limitations**:
+   - Function parameter count: max 5 parameters
+   - Large tuple warning: 3 items
+   - Large tuple error: 4 items
+   - Type names: max length 50 characters
+   - Cyclomatic complexity warning: 10
+
+## Implementation Requirements
+
+1. **Force Operations**:
+   - `force_cast` and `force_try` should be not allowed and will trigger warnings
+   - Use with caution and proper error handling
+
+2. **Naming Conventions**:
+   - Identifier exclusions allowed for: `id`, `x`, `y`, `z`
+   - All other identifiers must follow Swift naming conventions
+
+3. **Code Organization**:
+   - Imports must be sorted
+   - Proper spacing between declarations
+   - Consistent bracing style
+
+## Compliance Verification
+
+Before submitting any Swift code:
+1. Ensure compliance with all opt-in rules
+2. Verify no analyzer rule violations
+3. Check for proper formatting and organization
+4. Consider running SwiftLint locally to catch any issues
+
+## Note for AI Agents
+
+When implementing Swift code, you MUST:
+1. Review this configuration first
+2. Follow all enabled rules
+3. Avoid patterns that would trigger warnings or errors
+4. Include proper documentation and formatting
