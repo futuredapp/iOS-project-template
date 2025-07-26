@@ -1,0 +1,189 @@
+---
+alwaysApply: true
+description: "FuturedMacros Usage"
+---
+
+# 🏷 FuturedMacros Usage Guidelines
+
+## @ProxyMembers Usage
+
+**Rule**: Use `@ProxyMembers` for property delegation when you want to expose members of a nested type without boilerplate.
+
+**Requirements**:
+- The enclosing type MUST be marked with `@dynamicMemberLookup`
+- Apply to properties whose members should be directly accessible
+- The property must be a reference to a concrete type
+
+**Rationale**: Reduces boilerplate code and improves readability by automatically generating property forwarding code.
+
+**Bad**:
+```swift
+struct UserViewModel {
+    private var state: UserState
+    
+    var name: String {
+        get { state.name }
+        set { state.name = newValue }
+    }
+    
+    var email: String {
+        get { state.email }
+        set { state.email = newValue }
+    }
+}
+```
+
+**Good**:
+```swift
+@dynamicMemberLookup
+struct UserViewModel {
+    @ProxyMembers
+    private var state: UserState
+    
+    // All UserState properties are automatically accessible!
+}
+```
+
+## @EnumIdentable Usage
+
+**Rule**: Apply `@EnumIdentable` to enums that need to conform to `Identifiable`, especially when working with SwiftUI lists or collections.
+
+**Requirements**:
+- Use on enums that need unique identification
+- Include "id" in parameter names when that value should contribute to identity
+- The enum can have associated values
+
+**Rationale**: Automatically generates conformance to `Identifiable` while preserving the enum's associated values and providing stable identifiers.
+
+**Bad**:
+```swift
+enum LoadingState: Identifiable {
+    case loading
+    case loaded(Data)
+    case error(String)
+    
+    // Manual identity implementation
+    var id: String {
+        switch self {
+            case .loading: return "loading"
+            case .loaded: return "loaded"
+            case .error: return "error"
+        }
+    }
+}
+```
+
+**Good**:
+```swift
+@EnumIdentable
+enum LoadingState {
+    case loading
+    case loaded(data: Data, requestId: String)  // requestId contributes to identity
+    case error(message: String)
+}
+```
+
+## Common Use Cases
+
+**@ProxyMembers**:
+- ViewModels delegating to state objects
+- Wrapper types exposing inner properties
+- Composition patterns requiring member forwarding
+
+**@EnumIdentable**:
+- SwiftUI view states with associated data
+- Collection identifiers
+- Diffable data sources
+- State machines requiring unique identification
+# 🏷 FuturedMacros Usage Guidelines
+
+## @ProxyMembers Usage
+
+**Rule**: Use `@ProxyMembers` for property delegation when you want to expose members of a nested type without boilerplate.
+
+**Requirements**:
+- The enclosing type MUST be marked with `@dynamicMemberLookup`
+- Apply to properties whose members should be directly accessible
+- The property must be a reference to a concrete type
+
+**Rationale**: Reduces boilerplate code and improves readability by automatically generating property forwarding code.
+
+**Bad**:
+```swift
+struct UserViewModel {
+    private var state: UserState
+    
+    var name: String {
+        get { state.name }
+        set { state.name = newValue }
+    }
+    
+    var email: String {
+        get { state.email }
+        set { state.email = newValue }
+    }
+}
+```
+
+**Good**:
+```swift
+@dynamicMemberLookup
+struct UserViewModel {
+    @ProxyMembers
+    private var state: UserState
+    
+    // All UserState properties are automatically accessible!
+}
+```
+
+## @EnumIdentable Usage
+
+**Rule**: Apply `@EnumIdentable` to enums that need to conform to `Identifiable`, especially when working with SwiftUI lists or collections.
+
+**Requirements**:
+- Use on enums that need unique identification
+- Include "id" in parameter names when that value should contribute to identity
+- The enum can have associated values
+
+**Rationale**: Automatically generates conformance to `Identifiable` while preserving the enum's associated values and providing stable identifiers.
+
+**Bad**:
+```swift
+enum LoadingState: Identifiable {
+    case loading
+    case loaded(Data)
+    case error(String)
+    
+    // Manual identity implementation
+    var id: String {
+        switch self {
+            case .loading: return "loading"
+            case .loaded: return "loaded"
+            case .error: return "error"
+        }
+    }
+}
+```
+
+**Good**:
+```swift
+@EnumIdentable
+enum LoadingState {
+    case loading
+    case loaded(data: Data, requestId: String)  // requestId contributes to identity
+    case error(message: String)
+}
+```
+
+## Common Use Cases
+
+**@ProxyMembers**:
+- ViewModels delegating to state objects
+- Wrapper types exposing inner properties
+- Composition patterns requiring member forwarding
+
+**@EnumIdentable**:
+- SwiftUI view states with associated data
+- Collection identifiers
+- Diffable data sources
+- State machines requiring unique identification
