@@ -1,0 +1,22 @@
+name: On demand build
+
+on:
+  # Enable a workflow to be triggered manually
+  workflow_dispatch:
+    inputs:
+      changelog:
+        type: string
+        description: 'Custom changelog to use for the build'
+        required: false
+
+jobs:
+  build:
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@main
+    with:
+      changelog: ${{ github.event.inputs.changelog }}
+
+    secrets:
+      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
+      APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
+      APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}

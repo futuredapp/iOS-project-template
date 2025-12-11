@@ -1,7 +1,9 @@
 name: Test
 
-on: pull_request
+on: [pull_request]
 
 jobs:
   test:
     uses: futuredapp/.github/.github/workflows/ios-selfhosted-test.yml@main
+    secrets:
+      GITHUB_TOKEN_DANGER: ${{ secrets.DANGER_GITHUB_API_TOKEN }}

@@ -1,4 +1,4 @@
-name: Build
+name: Nightly build
 
 on:
   # Enable a workflow to be triggered manually
@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-build.yml@main
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-nightly-build.yml@main
 
     secrets:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
