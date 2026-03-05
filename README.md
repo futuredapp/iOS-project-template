@@ -30,7 +30,6 @@
 - Command line tools: **[Fastlane](https://docs.fastlane.tools)**
 - Code style:
 	- **[SwiftLint](https://swift.org/package-manager/)**
-	- **[Danger](https://github.com/futuredapp/danger)**
 - ~~Localizations: Czech, English~~
 
 ### Dependencies
