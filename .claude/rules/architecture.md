@@ -89,7 +89,6 @@ A single `Container` (in `Container.swift`) owns services and caches. The `AppCo
 
 - `DataCache<Model>` — `@Observable @MainActor` cache. Mutate via `update(_:with:)` and `populate(_:with:)`. Do not store raw `@Published` state for shared data.
 - `AlertModel` + `.alert(using:)` — SwiftUI alert wrapper. Don't hand-roll alert state.
-- `FullScreenScrollView` — for screens where content sometimes exceeds the viewport and sometimes doesn't.
 
 ## Scaffolding
 

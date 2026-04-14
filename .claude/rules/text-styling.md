@@ -1,3 +1,13 @@
+---
+paths:
+  - "**/*View*.swift"
+  - "**/*Component*.swift"
+  - "**/*UI*.swift"
+  - "**/UI/**/*.swift"
+  - "**/TextStyle*"
+  - "**/Theme/**/*.swift"
+  - "**/DesignSystem/**/*.swift"
+---
 # Text styling
 
 Every project defines a central `TextStyles` enum that maps to `TextStyle` from `FuturedHelpers`. No raw font sizes, weights, or line heights anywhere else in the codebase.

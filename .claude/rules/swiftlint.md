@@ -1,3 +1,8 @@
+---
+paths:
+  - "**/*.swift"
+  - ".swiftlint.yml"
+---
 # SwiftLint compliance
 
 **Before writing Swift, read `.swiftlint.yml`.** Configuration drifts; rules can change per project. This file summarizes the baseline, not the source of truth.
@@ -52,7 +57,7 @@ When a rule fights you, prefer restructuring the code. Examples:
 - `type_name` warning on `ID` associated type: `associatedtype ID // swiftlint:disable:this type_name` (unavoidable — ID is conventional).
 - `force_unwrapping` in a pre-condition you've just checked: refactor to `if let` / `guard let`.
 
-## Before pushing
+## Before pushing or commiting
 
 Run locally:
 

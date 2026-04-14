@@ -6,11 +6,15 @@ Shared data flows from `DataCache<DataCacheModel>` → `CacheProjection` → `Co
 
 - One app-wide `DataCache<DataCacheModel>` in `Container`. Coordinators may create private caches for scoped flows.
 - `@Observable @MainActor` — reading `dataCache.value` from a SwiftUI view body (or a `@Observable` model's computed property that the view reads) automatically registers observation.
-- Mutate only via `update(with:)`, `update(_:with:)`, `populate(_:with:)`. Do not reassign `value` directly.
+- Mutate only via `update(with:)`, `update(_:with:)`, `populate(_:with:)`.
 
 ## CacheProjection
 
-A `CacheProjection` is a value type that derives a scene's data from the cache:
+A `CacheProjection` is a value type that derives a scene's data from the cache.
+
+**Why projections exist.** `DataCache` is the single source of truth for shared data. Each screen should derive its current state entirely from the cache — not from ad-hoc local variables. A `CacheProjection` decomposes that derivation into a clear mapping: cache values in, screen state out. This keeps the logic testable, declarative, and contained in one place.
+
+**Why state and mock data are bundled.** The `.empty(state:)` factory pairs a `ComponentState` (`.loading`, `.empty`, `.error`) with `.mock` data. This is intentional: `.redacted(reason: .placeholder)` needs a fully populated view hierarchy to render shimmer placeholders correctly. By binding the loading state to mock data in the projection itself, we guarantee two things: (1) mock data never leaks into the `.ready` state, and (2) the `.ready` state is never shown while data is still loading.
 
 ```swift
 @dynamicMemberLookup
@@ -32,7 +36,7 @@ nonisolated struct ExhibitDetailCacheProjection: CacheProjection {
 
 nonisolated struct ExhibitDetailData: Equatable, Mockable {
     var detail: ExhibitDetail
-    static var mock: Self { Self(detail: .mock) }
+    static let mock: Self = Self(detail: .mock)
 }
 ```
 

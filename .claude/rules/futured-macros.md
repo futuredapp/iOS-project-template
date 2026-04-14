@@ -1,3 +1,7 @@
+---
+paths:
+  - "**/*.swift"
+---
 # FuturedMacros
 
 `futured-macros` is a package dependency that ships a handful of Swift macros. Use them; do not reinvent their output.

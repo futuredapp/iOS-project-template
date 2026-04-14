@@ -29,7 +29,7 @@ nonisolated struct DataCacheModel: Equatable, Sendable {
 
 nonisolated struct ExampleItem: Equatable, Sendable, Identifiable {
     let id: String
-    var title: String
+    let title: String
 }
 ```
 
@@ -49,6 +49,28 @@ extension DataCacheModel {
 
 Fix: declare the nested type inside the struct body (it inherits `nonisolated`), or move it to file scope with an explicit `nonisolated` annotation.
 
+## Escaping to background — `@concurrent`
+
+When a ComponentModel needs CPU-intensive or blocking work off the main actor, extract the logic into a `@concurrent` function (SE-0461, Swift 6.2+). Swift handles the isolation hop automatically when you `await` from a MainActor context:
+
+```swift
+// ComponentModel — MainActor by default
+func onAppear() async {
+    let result = await parsePayload(raw)  // hops off MainActor
+    self.items = result                    // back on MainActor
+}
+
+// Extracted — runs on any executor (background)
+@concurrent func parsePayload(_ data: Data) async -> [Item] {
+    // Heavy/blocking work here — no MainActor involvement
+    ...
+}
+```
+
+In practice, most background work already lives in **nonisolated services** (network layer, repositories, parsers). The ComponentModel just `await`s them — no manual extraction needed. Reserve `@concurrent func` for one-off computation that doesn't belong in a service.
+
+Do **not** use `Task { @MainActor in ... }` to "return" to the main actor — you never left it. A plain `Task { }` inside MainActor-isolated code is already MainActor-isolated.
+
 ## Sendable closures
 
 `async` closures stored inside model/state types (e.g. `StateInfoConfig.Action.action`) must be `@Sendable`:
@@ -63,5 +85,5 @@ struct Action: Equatable {
 ## Do not
 
 - Do not add `@MainActor` to models, views, or coordinators. It's already the default. Redundant annotations create noise and occasionally conflict with protocol requirements.
-- Do not sprinkle `Task { @MainActor in ... }` — you're already on MainActor. Use a plain `Task` and only `nonisolated` out when you need to escape.
+- Do not sprinkle `Task { @MainActor in ... }` — you're already on MainActor. Extract background work into a `nonisolated func` and `await` it (see "Escaping to background" above).
 - Do not mark UI helper views (e.g. `StateInfoView`, `ComponentStateView`) as `nonisolated`. They live on MainActor.
