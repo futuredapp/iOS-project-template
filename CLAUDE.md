@@ -64,6 +64,8 @@ swiftlint lint
 @.claude/rules/navigation.md
 @.claude/rules/futured-macros.md
 @.claude/rules/helpers.md
+@.claude/rules/ui-patterns.md
+@.claude/rules/previews-and-debug.md
 @.claude/rules/text-styling.md
 @.claude/rules/swiftlint.md
 

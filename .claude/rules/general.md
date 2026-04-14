@@ -44,6 +44,46 @@ struct MyCard<Content: View>: View {
 }
 ```
 
+## Safe URL construction
+
+For compile-time constant URLs (API base URLs, deep-link schemes, known endpoints), use a `URL(staticString:)` extension instead of force-unwrapping:
+
+```swift
+extension URL {
+    init(staticString: StaticString) {
+        guard let url = URL(string: "\(staticString)") else {
+            fatalError("Invalid static URL: \(staticString)")
+        }
+        self = url
+    }
+}
+
+// Usage
+let termsURL = URL(staticString: "https://example.com/terms")
+```
+
+This avoids `URL(string:)!` with a swiftlint disable comment while still failing loudly in development if the string is malformed.
+
+## DateFormatter — reuse, do not recreate
+
+`DateFormatter` creation is expensive. Never create one inside a `body` or a function called on every render. Define formatters as `static let` on an extension or a dedicated type:
+
+```swift
+extension DateFormatter {
+    static let eventDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+}
+
+// Usage
+Text(DateFormatter.eventDate.string(from: event.date))
+```
+
+For simple, non-reused formatting, `.formatted()` on `Date` is acceptable — it is internally cached by the system.
+
 ## Tap-target hit areas
 
 Empty whitespace inside a `Button` or gesture container is not tappable. Apply `.contentShape(.rect)`:
