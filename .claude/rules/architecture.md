@@ -58,7 +58,7 @@ extension ExampleComponentModel {
 ```
 
 Rules:
-- `@Observable final class`, `MainActor` by default — do not mark `@MainActor` explicitly, it's redundant in Swift 6 default mode.
+- `@Observable final class`, `MainActor` by default (see `concurrency.md` for isolation details).
 - A protocol `<Name>ComponentModelProtocol: ComponentModel` declares the public API. Always ship a `#if DEBUG` mock implementation for previews.
 - Coordinator-bound events travel out of the model via `onEvent: (Event) -> Void`. Never call the coordinator directly.
 - State is observed, not copied. See `state-management.md` for the computed-projection pattern over `DataCache`.
@@ -82,12 +82,11 @@ A single `Container` (in `Container.swift`) owns services and caches. The `AppCo
 
 ## Modals
 
-- Reusable modals: `ModalCoverModel<Destination>` on the coordinator.
-- View-scoped modals (sheets whose data and callbacks belong to a single parent Component/ComponentModel): present directly from that Component using `.sheet` bound to a parent ComponentModel property. Do not pollute the coordinator with one-off sheets.
+See `navigation.md` for full modal patterns (coordinator-owned and view-scoped).
 
 ## Files to use (and not reinvent)
 
-- `DataCache<Model>` — `@Observable @MainActor` cache. Mutate via `update(with:)`, `update(_:with:)`, and `populate(_:with:)`. Do not store raw `@Published` state for shared data.
+- `DataCache<Model>` — see `state-management.md` for mutation API and observation pattern.
 - `AlertModel` + `.defaultAlert(model:)` — SwiftUI alert wrapper. Don't hand-roll alert state.
 
 ## Scaffolding
