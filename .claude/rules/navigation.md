@@ -1,10 +1,3 @@
----
-paths:
-  - "**/Coordinator*.swift"
-  - "**/Flow*.swift"
-  - "**/Navigation/**/*.swift"
-  - "**/*Component*.swift"
----
 # Navigation
 
 Navigation is a coordinator concern. Components never call `NavigationLink(destination:)`, never assign to `path` themselves, never push/pop imperatively.
