@@ -65,4 +65,4 @@ Run locally:
 swiftlint lint
 ```
 
-Danger enforces this on PRs via `Dangerfile`. Do not merge with violations — fix them.
+CI enforces this on PRs. Do not merge with violations — fix them.

@@ -1,8 +1,9 @@
 ---
 paths:
-  - "**/Coordinator*"
-  - "**/Flow*"
-  - "**/Navigation/**"
+  - "**/Coordinator*.swift"
+  - "**/Flow*.swift"
+  - "**/Navigation/**/*.swift"
+  - "**/*Component*.swift"
 ---
 # Navigation
 
@@ -14,7 +15,7 @@ Use `NavigationStackCoordinator` + `NavigationStackFlow`:
 
 ```swift
 @Observable
-final class ExampleFlowCoordinator: NavigationStackCoordinator {
+final class ExampleFlowCoordinator: @MainActor NavigationStackCoordinator {
     var path: [Destination] = []
     var modalCover: ModalCoverModel<Destination>?
 
@@ -43,7 +44,7 @@ Use `TabCoordinator` + `TabViewFlow`. Each tab has its own child `NavigationStac
 
 ## Modal sheets
 
-- **Shared**: `modalCover: ModalCoverModel<Destination>?` on the coordinator. Reach `present(_:)` / `dismissModal()`.
+- **Shared**: `modalCover: ModalCoverModel<Destination>?` on the coordinator. Use `present(modal:type:)` / `dismissModal()`.
 - **View-scoped**: when a sheet's inputs and callbacks belong to a single parent Component, present directly from that Component using `.sheet(item:)`. Do not push view-scoped state into the coordinator.
 
 ### View-scoped modal pattern
@@ -109,7 +110,7 @@ ExampleComponent(model: ExampleComponentModel(
     onEvent: { [weak instance] event in
         switch event {
         case .openDetail(let id): instance?.navigate(to: .detail(id: id))
-        case .openSettings: instance?.present(.settings, style: .sheet)
+        case .openSettings: instance?.present(modal: .settings, type: .sheet)
         }
     }
 ))

@@ -4,7 +4,7 @@ paths:
   - "**/*Component*.swift"
   - "**/*UI*.swift"
   - "**/UI/**/*.swift"
-  - "**/TextStyle*"
+  - "**/TextStyle*.swift"
   - "**/Theme/**/*.swift"
   - "**/DesignSystem/**/*.swift"
 ---
@@ -54,7 +54,8 @@ public enum TextStyles {
 - Case names are semantic (`title1`, `body`, `caption`) — never size-based (`size28`, `font14`).
 - Provide a sensible default weight; accept a `Font.Weight` associated value for customization.
 - Include line height and letter spacing in the `TextStyle` when the design system specifies them.
-- Apply via `.textStyle(_:foregroundColor:)`; never call `.font(.system(size:))` in a view.
+- Apply via `.textStyle(_:)` or `.textStyle(_:foregroundStyle:)`; never call `.font(.system(size:))` in a view.
+- For `Text`-specific styling (no lineSpacing/textCase/padding), use `.textStyleText(_:)` — needed when composing styled `Text` with `+` operator.
 
 ```swift
 // Correct

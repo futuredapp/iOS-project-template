@@ -87,8 +87,8 @@ A single `Container` (in `Container.swift`) owns services and caches. The `AppCo
 
 ## Files to use (and not reinvent)
 
-- `DataCache<Model>` — `@Observable @MainActor` cache. Mutate via `update(_:with:)` and `populate(_:with:)`. Do not store raw `@Published` state for shared data.
-- `AlertModel` + `.alert(using:)` — SwiftUI alert wrapper. Don't hand-roll alert state.
+- `DataCache<Model>` — `@Observable @MainActor` cache. Mutate via `update(with:)`, `update(_:with:)`, and `populate(_:with:)`. Do not store raw `@Published` state for shared data.
+- `AlertModel` + `.defaultAlert(model:)` — SwiftUI alert wrapper. Don't hand-roll alert state.
 
 ## Scaffolding
 
