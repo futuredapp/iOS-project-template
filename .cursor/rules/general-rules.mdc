@@ -33,3 +33,22 @@ Text("Hello, World!")
     .navigationTitle("Greeting")
     .task { await viewModel.load() }
 ```
+
+## Safe URL construction
+
+For compile-time constant URLs, use a `URL(staticString:)` extension instead of force-unwrapping:
+
+```swift
+extension URL {
+    init(staticString: StaticString) {
+        guard let url = URL(string: "\(staticString)") else {
+            fatalError("Invalid static URL: \(staticString)")
+        }
+        self = url
+    }
+}
+```
+
+## DateFormatter — reuse, do not recreate
+
+`DateFormatter` creation is expensive. Never create one inside a `body` or a function called on every render. Define formatters as `static let` on an extension. For simple non-reused formatting, `.formatted()` on `Date` is acceptable.
