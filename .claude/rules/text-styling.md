@@ -1,13 +1,3 @@
----
-paths:
-  - "**/*View*.swift"
-  - "**/*Component*.swift"
-  - "**/*UI*.swift"
-  - "**/UI/**/*.swift"
-  - "**/TextStyle*.swift"
-  - "**/Theme/**/*.swift"
-  - "**/DesignSystem/**/*.swift"
----
 # Text styling
 
 Every project defines a central `TextStyles` enum that maps to `TextStyle` from `FuturedHelpers`. No raw font sizes, weights, or line heights anywhere else in the codebase.
@@ -68,8 +58,20 @@ Text("Welcome")
     .lineSpacing(6)
 ```
 
-## Supporting Dynamic Type
+## Combining text style with foreground color
 
-`TextStyle` handles Dynamic Type scaling internally. Do not override with fixed `.font(.custom:size:)` unless the design explicitly calls for a non-scaling label (in which case document why).
+When you need both a text style AND a foreground color, use the `textStyle(_:foregroundStyle:)` overload from `FuturedHelpers` — **do not** apply `.textStyle(...)` and `.foregroundStyle(...)` as separate modifiers:
 
-Sheets with dynamic content should measure their height and use `.presentationDetents([.height(measuredHeight)])` so the sheet grows with the user's text size.
+```swift
+// Correct — single modifier
+Text("Caption")
+    .textStyle(.bodySMRegular, foregroundStyle: Color(.textSecondary))
+
+// Wrong — separate modifiers (extra render pass, inconsistent animation)
+Text("Caption")
+    .textStyle(.bodySMRegular)
+    .foregroundStyle(Color(.textSecondary))
+```
+
+For `Text`-only composition (e.g. using `+` operator with styled runs), use `.textStyleText(_:foregroundStyle:)` instead.
+

@@ -37,6 +37,14 @@ Before creating or modifying UI, scan `UI/Components/` for existing reusable vie
 | BETA | `app.futured.{{app_id}}.beta` | Staging |
 | RELEASE | `app.futured.{{app_id}}` | Production |
 
+## Motion & haptics
+
+Project-specific values consumed by `@.claude/rules/ui-patterns.md` — the rule says toggles need animation + haptic; this section defines the concrete values for this project.
+
+- **State toggle animation:** `{{e.g. .spring(response: 0.3, dampingFraction: 0.6)}}` — applied via `.animation(_:value:)` on the view (not `withAnimation { ... }`).
+- **State toggle haptic:** `UIImpactFeedbackGenerator(style: {{.light}}).impactOccurred()` — triggered on the user action, not in `didSet`.
+- **Confirm/submit haptic:** `{{.medium}}` style.
+
 ## Development commands
 
 ```bash
@@ -52,22 +60,6 @@ bundle exec fastlane provisioning
 # Lint
 swiftlint lint
 ```
-
-## Architecture rules
-
-**Read these before writing Swift code.** They encode architectural decisions validated across Futured projects.
-
-@.claude/rules/general.md
-@.claude/rules/architecture.md
-@.claude/rules/state-management.md
-@.claude/rules/concurrency.md
-@.claude/rules/navigation.md
-@.claude/rules/futured-macros.md
-@.claude/rules/helpers.md
-@.claude/rules/ui-patterns.md
-@.claude/rules/previews-and-debug.md
-@.claude/rules/text-styling.md
-@.claude/rules/swiftlint.md
 
 ## Project structure
 

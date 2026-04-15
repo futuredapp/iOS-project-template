@@ -1,8 +1,3 @@
----
-paths:
-  - "**/*.swift"
-  - ".swiftlint.yml"
----
 # SwiftLint compliance
 
 **Before writing Swift, read `.swiftlint.yml`.** Configuration drifts; rules can change per project. This file summarizes the baseline, not the source of truth.

@@ -68,7 +68,7 @@ Use `.basedOnSize` by default. Only omit it when the screen always has enough co
 
 ## Animation for state transitions
 
-Showing or hiding content via `if`/`else` or state changes should be animated. A single `.animation` modifier or `withAnimation` block is enough:
+Showing or hiding content via `if`/`else` or state changes should be animated. Attach the `.animation(_:value:)` modifier to the view — do not wrap state changes in `withAnimation { ... }`:
 
 ```swift
 VStack {
@@ -80,9 +80,38 @@ VStack {
 ```
 
 Rules:
-- Animate visibility toggles (expand/collapse, error appearance, favorite toggle).
-- For favorite/like toggles, consider a small `.scaleEffect` bounce for tactile feedback.
+- Animate visibility toggles (expand/collapse, error appearance).
+- **Prefer the `.animation(_:value:)` modifier on the view over `withAnimation { ... }` wrapping state changes.** Declarative scoping is clearer, animates only the intended property, and composes with other modifiers.
 - Do not animate bulk data loads or list reloads — only user-initiated state changes.
+- The project's CLAUDE.md defines the concrete animation curve and duration to use for each category (toggles, expands, errors). Follow that spec — do not invent timings per scene.
+
+## State toggles (favorite, selection, expand)
+
+When a UI element toggles between two distinct states (favorite/unfavorite, selected/unselected, expanded/collapsed), the interaction **must** include:
+
+1. **An animation** on the state change — attached via `.animation(_:value:)` on the view.
+2. **Haptic feedback** triggered on the user action.
+3. **Visual response** on the affected element (scale bounce, fill change, color shift).
+
+```swift
+import SwiftUI
+import UIKit
+
+Button {
+    model.toggleFavorite()
+    UIImpactFeedbackGenerator(style: /* see project CLAUDE.md */ .light).impactOccurred()
+} label: {
+    Image(systemName: model.isFavorite ? "heart.fill" : "heart")
+        .scaleEffect(model.isFavorite ? 1.1 : 1.0)
+}
+.animation(/* see project CLAUDE.md */ .default, value: model.isFavorite)
+```
+
+Rules:
+- Every toggle has animation + haptic. Instant swaps without visual/tactile feedback are a bug.
+- Trigger the haptic on the **user action**, not in a `didSet` on the state — no-op retaps (already favorited) still feel responsive this way.
+- Concrete animation curve (spring params, duration) and haptic style are **defined per project in CLAUDE.md** so they match the design system's motion spec. Reference those values; do not hardcode new ones.
+- **Attach `.animation(_:value:)` to the view** — do **not** wrap `model.toggleFavorite()` in `withAnimation { }`.
 
 ## AsyncImage — use an app-level wrapper
 
@@ -141,3 +170,9 @@ struct EventCardView: View {
 ```
 
 If a design calls for a fixed-width element (e.g. a carousel card), set it at the call site via `.frame(width:)` and document why. Internal layout must remain flexible.
+
+## Supporting Dynamic Type in sheets
+
+`TextStyle` handles Dynamic Type scaling internally. Do not override with fixed `.font(.custom:size:)` unless the design explicitly calls for a non-scaling label (in which case document why).
+
+Sheets with dynamic content should measure their height and use `.presentationDetents([.height(measuredHeight)])` so the sheet grows with the user's text size.

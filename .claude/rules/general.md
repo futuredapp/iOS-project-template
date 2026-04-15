@@ -44,6 +44,33 @@ struct MyCard<Content: View>: View {
 }
 ```
 
+## Member ordering
+
+Public/internal members before private. Order within a type:
+
+1. Public/internal stored properties
+2. Computed properties
+3. Private stored properties
+4. `init`
+5. Public/internal functions
+6. Private functions
+
+## Init line-breaking
+
+When a function or initializer has 3 or more parameters, put each on its own line:
+
+```swift
+// Correct
+init(
+    dataCache: DataCache<DataCacheModel>,
+    service: FeedService,
+    onEvent: @escaping (Event) -> Void
+) { ... }
+
+// Wrong — hard to scan
+init(dataCache: DataCache<DataCacheModel>, service: FeedService, onEvent: @escaping (Event) -> Void) { ... }
+```
+
 ## Safe URL construction
 
 For compile-time constant URLs (API base URLs, deep-link schemes, known endpoints), use a `URL(staticString:)` extension instead of force-unwrapping:
