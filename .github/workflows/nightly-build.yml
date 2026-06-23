@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-nightly-build.yml@main
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-nightly-build.yml@2.4.2
 
     secrets:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
