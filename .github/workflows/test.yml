@@ -4,4 +4,4 @@ on: [pull_request]
 
 jobs:
   test:
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-test.yml@main
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-test.yml@2.4.2
