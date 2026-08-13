@@ -6,7 +6,7 @@ on:
 
 jobs:
   release:
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-release.yml@2.4.4
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-release.yml@2.4.5
 
     secrets:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
