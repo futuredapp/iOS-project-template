@@ -10,7 +10,6 @@ opt_in_rules:
   - closure_end_indentation
   - closure_spacing
   - collection_alignment
-  - conditional_returns_on_newline
   - contains_over_filter_count
   - contains_over_filter_is_empty
   - contains_over_first_not_nil
@@ -101,3 +100,44 @@ function_parameter_count: 5
 large_tuple:
   warning: 3
   error: 4
+
+# Futured conventions SwiftLint cannot express with built-in rules (see AGENTS.md)
+custom_rules:
+  non_void_return_on_newline:
+    name: "Non-void return on newline"
+    regex: '\belse\s*\{\s*return\s+[^}\n]+\}'
+    message: "Place a non-void return on its own line."
+    severity: warning
+  no_task_detached:
+    name: "Avoid Task.detached"
+    regex: '\bTask\.detached\b'
+    message: "Use @concurrent functions instead of Task.detached (see AGENTS.md)."
+    severity: warning
+  no_main_actor_run:
+    name: "Avoid MainActor.run"
+    regex: '\bMainActor\.run\b'
+    message: "Awaiting hops back to MainActor automatically — MainActor.run is unnecessary."
+    severity: warning
+  no_swiftui_spacer_for_alignment:
+    name: "Avoid Spacer for alignment"
+    regex: '^\s*Spacer\(\)\s*$'
+    message: "Prefer .frame(maxWidth:alignment:) over Spacer for alignment in SwiftUI."
+    severity: warning
+  no_inline_modifier_after_brace:
+    name: "Modifier on new line after }"
+    regex: '^\s*\}\.[a-zA-Z]\w*\s*[\(\{]'
+    message: "Place SwiftUI/closure modifiers on a new line after the closing brace."
+    severity: warning
+  no_orphan_argument_label:
+    name: "Argument label on its own line"
+    regex: '^\s+(?!case\b|default\b)[a-zA-Z_]\w*:\s*$'
+    match_kinds:
+      - argument
+      - identifier
+    message: "Place the argument value on the same line as its label."
+    severity: warning
+  no_mark_dash:
+    name: "MARK without dash"
+    regex: '//[ \t]*MARK:[ \t]*-'
+    message: "Use '// MARK: Section' without the leading dash (project convention)."
+    severity: warning

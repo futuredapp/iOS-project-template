@@ -1,0 +1,40 @@
+{
+  "extraKnownMarketplaces": {
+    "futured-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "futuredapp/FTClaudeMarketplace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "futuredkit-plugin@futured-marketplace": true,
+    "ios-networking-plugin@futured-marketplace": true,
+    "ios-accessibility-plugin@futured-marketplace": true,
+    "ios-performance-plugin@futured-marketplace": true,
+    "figma-to-xcode-plugin@futured-marketplace": true,
+    "testing-plugin@futured-marketplace": true,
+    "git-conventions-plugin@futured-marketplace": true,
+    "handbook-plugin@futured-marketplace": true,
+    "interview-plugin@futured-marketplace": true,
+    "ios-review-plugin@futured-marketplace": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(xcodebuild:*)",
+      "Bash(xcrun simctl:*)",
+      "Bash(swiftlint:*)",
+      "Bash(swiftformat:*)",
+      "Bash(bundle exec fastlane provisioning)",
+      "Bash(bundle exec fastlane test)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git blame:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh pr list:*)"
+    ]
+  }
+}

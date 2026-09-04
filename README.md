@@ -29,7 +29,9 @@
 - Dependency management: ~~**[Swift package manager](https://swift.org/package-manager/)**~~
 - Command line tools: **[Fastlane](https://docs.fastlane.tools)**
 - Code style:
-	- **[SwiftLint](https://swift.org/package-manager/)**
+	- **[SwiftLint](https://github.com/realm/SwiftLint)** (`.swiftlint.yml`)
+	- **[SwiftFormat](https://github.com/nicklockwood/SwiftFormat)** (`.swiftformat`)
+- Coding agents: **[AGENTS.md](AGENTS.md)** (`CLAUDE.md` is a symlink to it) — architecture, conventions and the Futured Claude skills to use
 - ~~Localizations: Czech, English~~
 
 ### Dependencies
@@ -46,5 +48,6 @@
 In the project folder from Terminal:
 
 1. `bundle install` - install gemfile dependencies
-2. `bundle exec fastlane provisioning` - download development provisioning profiles and certificate
-3. build using Xcode
+2. `brew install swiftlint swiftformat` - lint and format tools used by the build phases
+3. `bundle exec fastlane provisioning` - download development provisioning profiles and certificate
+4. build using Xcode
