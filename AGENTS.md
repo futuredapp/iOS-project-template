@@ -109,7 +109,7 @@ Build settings on **every** target (app, extensions, tests): `SWIFT_VERSION` 6.x
 
 ## Networking
 
-- REST → **FTAPIKit 2.0**: one endpoint per file under `Networking/Endpoints/<Feature>/<Action><Entity>Endpoint.swift`; servers conform to `URLServer`; pick the endpoint protocol by the decision tree in `/ftapikit-expert`. Cross-cutting headers belong in a `RequestConfiguring`, request logging in a `NetworkObserver` behind `#if DEBUG`.
+- REST → **FTAPIKit 2.x**: one endpoint per file under `Networking/Endpoints/<Feature>/<Action><Entity>Endpoint.swift`; servers conform to `URLServer`; pick the endpoint protocol by the decision tree in `/ftapikit-expert`. Cross-cutting headers belong in a `RequestConfiguring`, request logging in a `NetworkObserver` behind `#if DEBUG`.
 - GraphQL → **GraphQLAPIKit** (Apollo): operations in `GraphQLGenerated/{Queries,Mutations,Fragments}/*.graphql`, generated Swift is committed, codegen runs as a build phase. Reuse existing fragments before adding fields. Details in `/graphqlkit-expert`.
 - An `ApiService` protocol wraps the adapter so ComponentModels and Resources never see Apollo or `URLSession` types; the `Production…` implementation maps transport errors to the app error type.
 - Base URLs and keys come from `.xcconfig` via Info.plist and FuturedHelpers `ConfigKey`; secrets only in the git-ignored `Local.xcconfig`. Check FuturedHelpers (and FTNetworkTracer for request logging) before writing a helper.

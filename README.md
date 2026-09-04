@@ -6,7 +6,7 @@
 
 - Deadline: ~~**--. --. ----**~~
 - Next release: ~~**1.0.0**~~
-- Deployment target: ~~**16.0**~~
+- Deployment target: ~~**17.0**~~
 - Bundle identifiers: ~~`app.futured.project`, `app.futured.project.beta, `app.customer.project``~~
 - Supports: ~~**Dark mode, Landscape orientation, iPadOS, Accessibility**~~
 - Design: ~~Figma (add link)~~
@@ -24,8 +24,8 @@
 
 ### Tools
 
-- Language: ~~**Swift 5.10**~~
-- IDE: ~~**Xcode 16.1**~~
+- Language: ~~**Swift 6.3**~~
+- IDE: ~~**Xcode 27.0**~~
 - Dependency management: ~~**[Swift package manager](https://swift.org/package-manager/)**~~
 - Command line tools: **[Fastlane](https://docs.fastlane.tools)**
 - Code style:
@@ -36,9 +36,10 @@
 
 ### Dependencies
 
+- **[FuturedKit](https://github.com/futuredapp/FuturedKit)** (`FuturedArchitecture`: coordinators, `ComponentModel`, `DataCache`; optionally `FuturedHelpers`)
+- **[futured-macros](https://github.com/futuredapp/futured-macros)** (`FuturedMacros`: `@EnumIdentable`, `@ProxyMembers`)
 - ~~**[FTAPIKit](https://github.com/futuredapp/FTAPIKit)** (Declarative access to REST API.)~~
-- ~~**[FTTestingKit](https://github.com/futuredapp/FTTestingKit)** (Helpers for testing long-running tasks and generating mockups)~~
-- ~~**[FuntastyKit](https://github.com/futuredapp/FuntastyKit)** (Basics of MVVM-C architecture, coordinators, UIKit extensions and helpers.)~~
+- ~~**[GraphQLAPIKit](https://github.com/futuredapp/GraphQLAPIKit)** (Apollo-based GraphQL client.)~~
 
 ~~Manually added:~~
 - ~~**[ACKLocalization](https://github.com/AckeeCZ/ACKLocalization.git)** (Localize your Cocoa apps from Google Spreadsheet.)~~
