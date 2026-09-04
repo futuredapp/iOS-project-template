@@ -47,3 +47,10 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 fastlane/README.md
+
+# Local build configuration (FuturedKit app template; secrets live here)
+Local.xcconfig
+
+# Coding agents — personal overrides stay local
+CLAUDE.local.md
+.claude/settings.local.json
