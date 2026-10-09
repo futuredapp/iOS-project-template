@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@2.5.0
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@2.7.0
     with:
       changelog: ${{ github.event.inputs.changelog }}
 
