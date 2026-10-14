@@ -12,7 +12,9 @@ on:
 
 jobs:
   build:
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-nightly-build.yml@2.5.0
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-nightly-build.yml@2.8.0
+    with:
+      feature_reviewer: ${{ vars.FEATURE_REVIEWER_SLACK }}
 
     secrets:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
@@ -20,3 +22,4 @@ jobs:
       APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
       APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
       JIRA_CONTEXT: ${{ secrets.JIRA_CONTEXT }}
+      SLACK_WEBHOOK_FEATURE_REVIEW: ${{ secrets.SLACK_WEBHOOK_FEATURE_REVIEW }}

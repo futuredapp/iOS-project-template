@@ -1,0 +1,28 @@
+name: AI review
+
+# Runs on ready PRs and on a "/review" or "/review deep" PR comment.
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  statuses: write
+
+jobs:
+  review:
+    uses: futuredapp/.github/.github/workflows/universal-cloud-ai-pr-review.yml@2.8.0
+    with:
+      marketplace_repository: futuredapp/FTClaudeMarketplace
+      plugin: ios-review-plugin@futured-marketplace
+      skill: ios-review-plugin:ios-pr-check
+      skill_path: ios/ios-review-plugin/skills/ios-pr-check
+      reviewer: ${{ vars.PROJECT_REVIEWER }}
+
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      CLAUDE_MARKETPLACE_TOKEN: ${{ secrets.CLAUDE_MARKETPLACE_TOKEN }}
