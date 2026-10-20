@@ -11,12 +11,18 @@ on:
 
 jobs:
   build:
+    # pull-requests: read lets the feature review step find the PRs in the build.
+    permissions:
+      contents: read
+      pull-requests: read
     uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@2.8.0
     with:
       changelog: ${{ github.event.inputs.changelog }}
+      feature_reviewer: ${{ vars.FEATURE_REVIEWER_SLACK }}
 
     secrets:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
       APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
       APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
+      SLACK_WEBHOOK_FEATURE_REVIEW: ${{ secrets.SLACK_WEBHOOK_FEATURE_REVIEW }}
