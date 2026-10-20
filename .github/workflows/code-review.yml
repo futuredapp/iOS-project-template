@@ -5,9 +5,9 @@ name: Code review
 # so it also works for bot-authored PRs; it never checks out PR code.
 on:
   pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
+    types: [opened, synchronize, reopened, ready_for_review, edited]
   pull_request_target:
-    types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
+    types: [opened, synchronize, reopened, ready_for_review, edited, labeled, unlabeled]
   pull_request_review:
     types: [submitted, dismissed]
   issue_comment:
@@ -21,7 +21,8 @@ permissions:
 
 jobs:
   ai-review:
-    if: github.event_name == 'pull_request' || github.event_name == 'issue_comment'
+    # Bot-authored PRs get no secrets on pull_request; a writer comments /review or approves instead.
+    if: (github.event_name == 'pull_request' && github.event.pull_request.user.type != 'Bot') || github.event_name == 'issue_comment'
     uses: futuredapp/.github/.github/workflows/universal-cloud-ai-pr-review.yml@2.8.0
     with:
       marketplace_repository: futuredapp/FTClaudeMarketplace
