@@ -53,7 +53,7 @@ swiftformat . && swiftlint --fix --quiet && swiftlint
 - `develop` is the integration branch, `main` holds released code. Both are protected; changes land only via PR.
 - Branches: `feature|fix|hotfix/<JIRA-ID>-short-description`, `housekeep/<topic>`, `release/<version>`.
 - Commits follow Conventional Commits: `type(scope): description`, imperative present tense, subject under 50 characters, no trailing period (`feat(experts): add list search`). Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`. One concern per commit.
-- PRs: at least one approval, green CI, screenshots or GIFs for UI changes. Use `/commit` and `/pull-request` (see Skills).
+- PRs merge on green CI and the `review-gate` check: the AI review bot reviews every push to a PR into `develop`, a human approval is needed only for red zones (the bot labels them `needs-human`) or when you add that label. Every PR carries evidence: screenshots or a recording for UI, a test for a fix. Use `/commit` and `/pull-request` (see Skills).
 
 ## Architecture — FuturedArchitecture (FuturedKit)
 
@@ -153,6 +153,12 @@ Enforced by **SwiftFormat** (`.swiftformat`) and then **SwiftLint** (`.swiftlint
 - Every lookup or predicate test includes a non-matching case; otherwise an implementation that ignores its argument passes.
 - Propose the scenarios before writing tests, avoid duplicate coverage, use the minimal data that proves the behaviour.
 
+## Red zones
+
+Project-specific areas where the review bot asks for a human review, on top of the shared list (money, identity, user data, app infrastructure, release, review rules). The bot reads this section from the base branch. One line each, e.g. `Checkout module — prices are computed client-side`; delete the TODO when there are none.
+
+- TODO
+
 ## Skills & agents (Claude Code, Futured marketplace)
 
 Company-maintained plugins live in [futuredapp/FTClaudeMarketplace](https://github.com/futuredapp/FTClaudeMarketplace). `.claude/settings.json` in this repo registers the marketplace and enables the iOS set, so trusting the folder installs them. Marked entries (*) are not enabled by default: install `knowledge-hub` and `futured-git-workflows-plugin` via `/plugin`. Reach for them at these points:
@@ -165,7 +171,7 @@ Company-maintained plugins live in [futuredapp/FTClaudeMarketplace](https://gith
 | "How did another Futured project do X?" | `/knowledge-hub` * (needs company network) |
 | Figma hand-off of colors, typography, icons | `/figma-to-xcode` |
 | Adding UI automation identifiers | `/add-test-tags` |
-| Before opening a PR, and after addressing review comments | `/ios-review` — independent multi-lens review against this file; `code-reviewer` agent for a quick FuturedKit pass |
+| Before opening a PR (optional; the bot runs `/ios-pr-check` on every push, comment `/review` to re-run) | `/ios-review` — independent multi-lens review against this file, incl. drift; `code-reviewer` agent for a quick FuturedKit pass |
 | Accessibility claims or VoiceOver work | `/accessibility-nutrition-labels`, `/swiftui-voiceover` |
 | Performance regression (launch, hangs, hitches, memory) | `/performance-metrics [metric]` |
 | Committing and opening the PR | `/commit`, `/pull-request` |

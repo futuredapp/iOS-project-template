@@ -1,0 +1,39 @@
+name: Code review
+
+# AI review on every push of a ready PR and on a "/review" comment; the required "review-gate" status
+# is kept current on PR and review events. pull_request_target runs the gate from the base branch,
+# so it also works for bot-authored PRs; it never checks out PR code.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review, edited, labeled, unlabeled]
+  pull_request_review:
+    types: [submitted, dismissed]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  statuses: write
+
+jobs:
+  ai-review:
+    # Bot-authored PRs get no secrets on pull_request; a writer comments /review or approves instead.
+    if: (github.event_name == 'pull_request' && github.event.pull_request.user.type != 'Bot') || github.event_name == 'issue_comment'
+    uses: futuredapp/.github/.github/workflows/universal-cloud-ai-pr-review.yml@2.8.0
+    with:
+      marketplace_repository: futuredapp/FTClaudeMarketplace
+      plugin: ios-review-plugin@futured-marketplace
+      skill: ios-review-plugin:ios-pr-check
+      skill_path: ios/ios-review-plugin/skills/ios-pr-check
+      reviewer: ${{ vars.PROJECT_REVIEWER }}
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      CLAUDE_MARKETPLACE_TOKEN: ${{ secrets.CLAUDE_MARKETPLACE_TOKEN }}
+
+  review-gate:
+    if: github.event_name == 'pull_request_target' || github.event_name == 'pull_request_review'
+    uses: futuredapp/.github/.github/workflows/universal-cloud-review-gate.yml@2.8.0
