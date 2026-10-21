@@ -53,7 +53,7 @@ swiftformat . && swiftlint --fix --quiet && swiftlint
 - `develop` is the integration branch, `main` holds released code. Both are protected; changes land only via PR.
 - Branches: `feature|fix|hotfix/<JIRA-ID>-short-description`, `housekeep/<topic>`, `release/<version>`.
 - Commits follow Conventional Commits: `type(scope): description`, imperative present tense, subject under 50 characters, no trailing period (`feat(experts): add list search`). Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`. One concern per commit.
-- PRs merge on green CI and the `review-gate` check: the AI review bot reviews every push, a human approval is needed only for red zones (the bot labels them `needs-human`) or when you add that label. Every PR carries evidence: screenshots or a recording for UI, a test for a fix. Use `/commit` and `/pull-request` (see Skills).
+- PRs merge on green CI and the `review-gate` check: the AI review bot reviews every push to a PR into `develop`, a human approval is needed only for red zones (the bot labels them `needs-human`) or when you add that label. Every PR carries evidence: screenshots or a recording for UI, a test for a fix. Use `/commit` and `/pull-request` (see Skills).
 
 ## Architecture — FuturedArchitecture (FuturedKit)
 
