@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@2.8.0
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@main
     with:
       changelog: ${{ github.event.inputs.changelog }}
 
@@ -20,20 +20,4 @@ jobs:
       APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
       APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
       APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
-
-  # Slack ping to the project reviewer for PRs labeled feature-complete in this build.
-  # A custom changelog skips change detection, and with it the ping.
-  feature-review:
-    needs: build
-    if: needs.build.outputs.from_commit != ''
-    permissions:
-      contents: read
-      pull-requests: read
-    uses: futuredapp/.github/.github/workflows/universal-cloud-feature-review-notify.yml@2.8.0
-    with:
-      from_commit: ${{ needs.build.outputs.from_commit }}
-      to_commit: ${{ needs.build.outputs.to_commit }}
-      reviewer: ${{ vars.FEATURE_REVIEWER_SLACK }}
-      build_name: 'iOS on-demand build'
-    secrets:
       SLACK_WEBHOOK_FEATURE_REVIEW: ${{ secrets.SLACK_WEBHOOK_FEATURE_REVIEW }}
