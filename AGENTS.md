@@ -155,7 +155,7 @@ Enforced by **SwiftFormat** (`.swiftformat`) and then **SwiftLint** (`.swiftlint
 
 ## Red zones
 
-Project-specific areas where the review bot asks for a human review, on top of the shared list (money, identity, user data, app infrastructure, release, review rules). The bot reads this section from the base branch. One line each, e.g. `Checkout module — prices are computed client-side`; delete the TODO when there are none.
+Project-specific areas where the review bot asks for a human review, on top of the shared list (money, identity, user data, app infrastructure, release). The bot reads this section from the base branch. One line each, e.g. `Checkout module — prices are computed client-side`; delete the TODO when there are none.
 
 - TODO
 
