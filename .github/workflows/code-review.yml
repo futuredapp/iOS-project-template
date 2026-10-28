@@ -1,0 +1,28 @@
+name: Code review
+
+# AI review of every push to a ready PR and on a "/review" comment, and the required "review-gate" status.
+# The shared workflow picks the events each part runs on.
+on:
+  pull_request:
+    # No "edited": a description edit would only add skipped checks. After a retarget to develop, comment /review.
+    types: [opened, synchronize, reopened, ready_for_review]
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review, edited, labeled, unlabeled]
+  pull_request_review:
+    types: [submitted, dismissed]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  statuses: write
+
+jobs:
+  review:
+    uses: futuredapp/.github/.github/workflows/universal-cloud-ai-pr-review.yml@main
+    with:
+      marketplace_repository: futuredapp/FTClaudeMarketplace
+      skill: ios-review-plugin:ios-pr-check
+    secrets: inherit

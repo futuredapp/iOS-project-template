@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@2.5.0
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@main
     with:
       changelog: ${{ github.event.inputs.changelog }}
 
@@ -20,3 +20,4 @@ jobs:
       APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
       APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
       APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
+      SLACK_WEBHOOK_FEATURE_REVIEW: ${{ secrets.SLACK_WEBHOOK_FEATURE_REVIEW }}
