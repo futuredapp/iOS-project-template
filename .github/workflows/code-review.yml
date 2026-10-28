@@ -4,7 +4,8 @@ name: Code review
 # The shared workflow picks the events each part runs on.
 on:
   pull_request:
-    types: [opened, synchronize, reopened, ready_for_review, edited]
+    # No "edited": a description edit would only add skipped checks. After a retarget to develop, comment /review.
+    types: [opened, synchronize, reopened, ready_for_review]
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review, edited, labeled, unlabeled]
   pull_request_review:
