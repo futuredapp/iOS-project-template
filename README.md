@@ -31,7 +31,7 @@
 - Code style:
 	- **[SwiftLint](https://github.com/realm/SwiftLint)** (`.swiftlint.yml`)
 	- **[SwiftFormat](https://github.com/nicklockwood/SwiftFormat)** (`.swiftformat`)
-- Coding agents: **[AGENTS.md](AGENTS.md)** (`CLAUDE.md` is a symlink to it) — architecture, conventions and the Futured Claude skills to use
+- Coding agents: **[AGENTS.md](AGENTS.md)** (read natively by Claude Code, Codex, Cursor, …) — architecture, conventions and the Futured Claude skills to use
 - ~~Localizations: Czech, English~~
 
 ### Dependencies

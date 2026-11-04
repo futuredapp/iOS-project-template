@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Guidance for coding agents (Claude Code, Codex, Cursor, …) working in this repository. `CLAUDE.md` is a symlink to this file; keep `AGENTS.md` the single source of truth.
+Guidance for coding agents (Claude Code, Codex, Cursor, …) working in this repository. Claude Code reads this file natively, so there is no `CLAUDE.md` — don't add one: a `CLAUDE.md` or `CLAUDE.local.md` next to it makes Claude Code skip this file.
 
 <!-- Maintainers: keep this file under 200 lines. Add a rule only when an agent got it
      wrong twice or a reviewer had to explain it. If SwiftLint/SwiftFormat can enforce a rule, put it
