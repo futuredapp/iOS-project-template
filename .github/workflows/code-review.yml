@@ -25,4 +25,7 @@ jobs:
     with:
       marketplace_repository: futuredapp/FTClaudeMarketplace
       skill: ios-review-plugin:ios-pr-check
-    secrets: inherit
+    # Only what the review uses, so it never sees the project's signing or App Store Connect secrets.
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      CLAUDE_MARKETPLACE_SSH_KEY: ${{ secrets.CLAUDE_MARKETPLACE_SSH_KEY }}
