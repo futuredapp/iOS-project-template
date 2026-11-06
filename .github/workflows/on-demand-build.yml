@@ -11,6 +11,10 @@ on:
 
 jobs:
   build:
+    # Explicit, so the shared workflow's `pull-requests: read` also works under a read-only default token.
+    permissions:
+      contents: read
+      pull-requests: read
     uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@2.10.1
     with:
       changelog: ${{ github.event.inputs.changelog }}
