@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-nightly-build.yml@2.10.1
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-nightly-build.yml@2.11.0
 
     secrets:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}

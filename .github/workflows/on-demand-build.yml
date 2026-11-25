@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@2.10.1
+    uses: futuredapp/.github/.github/workflows/ios-selfhosted-on-demand-build.yml@2.11.0
     with:
       changelog: ${{ github.event.inputs.changelog }}
 
